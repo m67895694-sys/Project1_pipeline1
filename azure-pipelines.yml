@@ -1,0 +1,23 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+
+# Install Node.js
+- task: NodeTool@0
+  inputs:
+    versionSpec: '18.x'
+  displayName: 'Install Node.js'
+
+# Install dependencies (if package.json exists)
+- script: |
+    npm install
+  displayName: 'Install dependencies'
+
+# Run your JS file
+- script: |
+    node Program1.js
+  displayName: 'Run Program1.js'
